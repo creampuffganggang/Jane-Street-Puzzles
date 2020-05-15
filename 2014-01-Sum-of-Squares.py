@@ -25,15 +25,11 @@ problem += x[(5, 5)] == 0 #Column 5 Constraints
 
 #Solve LP
 problem.solve()
-solution = [[0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0]]
+solution = [[0 for i in range(5)] for j in range(5)]
 
 for row in nums:
     for col in nums:
-        solution[row - 1][col - 1] = x[(row, col)].varValue
+        solution[row - 1][col - 1] = int(x[(row, col)].varValue)
 
 for i in range(5):
     print(solution[i])
