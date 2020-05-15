@@ -19,22 +19,14 @@ for col in nums:
 
 #Solve LP
 problem.solve()
-solution = [[0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0]]
+solution = [[0 for i in range(9)] for j in range(9)]
 
 count = 0
 for row in nums:
     for col in nums:
-        solution[row - 1][col - 1] = max(row, col) * x[(row, col)].varValue
+        solution[row - 1][col - 1] = int(max(row, col) * x[(row, col)].varValue)
         if (row + col) % 2 == 0:
-            count += max(row, col) * x[(row, col)].varValue
+            count += int(max(row, col) * x[(row, col)].varValue)
 for i in range(9):
     print(solution[i])
 print(count)
